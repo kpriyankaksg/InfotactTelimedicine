@@ -1,5 +1,4 @@
 import { Box, Grid, Paper, Typography } from "@mui/material";
-import { blue } from "@mui/material/colors";
 
 export default function Home() {
   return (
@@ -45,7 +44,7 @@ export default function Home() {
           <Typography variant="h2" color="primary" gutterBottom
           sx={{py:5}}
           >
-            We at Health Care are there for you ALWAYS and in ALL WAYS
+            We at Health Care are there for you ALWAYS and in ALL WAYS.
           </Typography>
           {/* <h1 sx={{color: 'blue'}}> We at Health Care are there for you ALWAYS and in ALL WAYS</h1> */}
           <Typography variant="body1" color="textSecondary">

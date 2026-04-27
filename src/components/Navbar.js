@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, Button, Box, Menu, MenuItem } from "@mui/material";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { AppBar, Toolbar, Typography, Button, Box, Menu, MenuItem, Grid } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [deptAnchorEl, setDeptAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -12,6 +14,15 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+  const handleDeptHover = (event) => {
+    setDeptAnchorEl(event.currentTarget);
+  };
+
+  const handleDeptClose = () => {
+    setDeptAnchorEl(null);
+  };
+
 
   return (
     <AppBar position="static" color="default" elevation={2}>
@@ -28,7 +39,71 @@ export default function Navbar() {
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
           <Button component={Link} to="/" color="inherit">Home</Button>
           <Button component={Link} to="/about" color="inherit">About Us</Button>
-          <Button component={Link} to="/departments" color="inherit">Department</Button>
+          {/* <Button component={Link} to="/departments" color="inherit">Department</Button> */}
+           {/* Departments Dropdown */}
+          <Button endIcon={<KeyboardArrowDownIcon />}
+            color="inherit"
+             onMouseEnter={handleDeptHover}
+            // onMouseLeave={handleDeptClose}
+              // onClick={handleDeptHover}
+          >
+            Department 
+          </Button>
+          <Menu
+            anchorEl={deptAnchorEl}
+            open={Boolean(deptAnchorEl)}
+           onClose={handleDeptClose}
+            MenuListProps={{ onMouseLeave: handleDeptClose }}
+              PaperProps={{
+                          sx: {
+                            p: 2,
+                            borderRadius: "12px !important",        // rounded corners
+                            boxShadow: 4,           // optional shadow for depth
+                            overflow: "hidden", 
+                          },
+                        }}
+          >
+             <Grid container spacing={4} sx={{p:4 }}>
+              {/* Medical Department Column */}
+              <Grid item xs={6}>
+                <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1, color:'teal' }}>
+                  Medical Department
+                </Typography>
+                <MenuItem component={Link} to="/general-medicine" onClick={handleDeptClose}>General Medicine</MenuItem>
+                <MenuItem component={Link} to="/pediatrics" onClick={handleDeptClose}>Pediatrics</MenuItem>
+                <MenuItem component={Link} to="/dermatology" onClick={handleDeptClose}>Dermatology</MenuItem>
+                <MenuItem component={Link} to="/neurology" onClick={handleDeptClose}>Neurology</MenuItem>
+                <MenuItem component={Link} to="/cardiology" onClick={handleDeptClose}>Cardiology</MenuItem>
+              </Grid>
+                <Grid item xs={6}>
+                <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1,color:'teal' }}>
+                  Surgical Department
+                </Typography>
+                <MenuItem component={Link} to="/general-surgery" onClick={handleDeptClose}>General Surgery</MenuItem>
+                <MenuItem component={Link} to="/orthopedics" onClick={handleDeptClose}>Orthopedics</MenuItem>
+                <MenuItem component={Link} to="/ent" onClick={handleDeptClose}>ENT</MenuItem>
+                <MenuItem component={Link} to="/urology" onClick={handleDeptClose}>Urology</MenuItem>
+                <MenuItem component={Link} to="/plastic-surgery" onClick={handleDeptClose}>Plastic Surgery</MenuItem>
+              </Grid>
+            </Grid>
+            </Menu>
+
+
+            {/* <MenuItem disabled>Medical Department</MenuItem>
+            <MenuItem component={Link} to="/general-medicine" onClick={handleDeptClose}>General Medicine</MenuItem>
+            <MenuItem component={Link} to="/pediatrics" onClick={handleDeptClose}>Pediatrics</MenuItem>
+            <MenuItem component={Link} to="/dermatology" onClick={handleDeptClose}>Dermatology</MenuItem>
+            <MenuItem component={Link} to="/neurology" onClick={handleDeptClose}>Neurology</MenuItem>
+            <MenuItem component={Link} to="/cardiology" onClick={handleDeptClose}>Cardiology</MenuItem>
+
+            <MenuItem disabled>Surgical Department</MenuItem>
+            <MenuItem component={Link} to="/general-surgery" onClick={handleDeptClose}>General Surgery</MenuItem>
+            <MenuItem component={Link} to="/orthopedics" onClick={handleDeptClose}>Orthopedics</MenuItem>
+            <MenuItem component={Link} to="/ent" onClick={handleDeptClose}>ENT</MenuItem>
+            <MenuItem component={Link} to="/urology" onClick={handleDeptClose}>Urology</MenuItem>
+            <MenuItem component={Link} to="/plastic-surgery" onClick={handleDeptClose}>Plastic Surgery</MenuItem>
+          </Menu> */}
+
           <Button component={Link} to="/labs" color="inherit">Lab & Diagnostic</Button>
           <Button component={Link} to="/contact" color="inherit">Contact Us</Button>
         </Box>
