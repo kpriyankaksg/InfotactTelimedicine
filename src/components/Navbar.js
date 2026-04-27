@@ -25,7 +25,7 @@ export default function Navbar() {
 
 
   return (
-    <AppBar position="static" color="default" elevation={2}>
+    <AppBar position="static" color="default" elevation={2} >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         {/* Logo + Title */}
         <Box display="flex" alignItems="center">
@@ -89,20 +89,6 @@ export default function Navbar() {
             </Menu>
 
 
-            {/* <MenuItem disabled>Medical Department</MenuItem>
-            <MenuItem component={Link} to="/general-medicine" onClick={handleDeptClose}>General Medicine</MenuItem>
-            <MenuItem component={Link} to="/pediatrics" onClick={handleDeptClose}>Pediatrics</MenuItem>
-            <MenuItem component={Link} to="/dermatology" onClick={handleDeptClose}>Dermatology</MenuItem>
-            <MenuItem component={Link} to="/neurology" onClick={handleDeptClose}>Neurology</MenuItem>
-            <MenuItem component={Link} to="/cardiology" onClick={handleDeptClose}>Cardiology</MenuItem>
-
-            <MenuItem disabled>Surgical Department</MenuItem>
-            <MenuItem component={Link} to="/general-surgery" onClick={handleDeptClose}>General Surgery</MenuItem>
-            <MenuItem component={Link} to="/orthopedics" onClick={handleDeptClose}>Orthopedics</MenuItem>
-            <MenuItem component={Link} to="/ent" onClick={handleDeptClose}>ENT</MenuItem>
-            <MenuItem component={Link} to="/urology" onClick={handleDeptClose}>Urology</MenuItem>
-            <MenuItem component={Link} to="/plastic-surgery" onClick={handleDeptClose}>Plastic Surgery</MenuItem>
-          </Menu> */}
 
           <Button component={Link} to="/labs" color="inherit">Lab & Diagnostic</Button>
           <Button component={Link} to="/contact" color="inherit">Contact Us</Button>
@@ -138,7 +124,7 @@ export default function Navbar() {
             <MenuItem component={Link} to="/login-doctor" onClick={handleClose}>
               Doctor Login
             </MenuItem>
-            <MenuItem component={Link} to="/login-patient" onClick={handleClose}>
+            <MenuItem component={Link} to="/patientLogin" onClick={handleClose}>
               Patient Login
             </MenuItem>
           </Menu>
