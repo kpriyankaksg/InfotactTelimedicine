@@ -1,59 +1,128 @@
-import React, { useState } from "react";
-import API from "../api";
+import {
+  Box,
+  Button,
+  Paper,
+  TextField,
+  Typography,
+  Link,
+  MenuItem,
+} from "@mui/material";
+import { useState } from "react";
 
-export default function Register() {
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+const Register = () => {
+  const [role, setRole] = useState("Patient");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await API.post("/auth/register", form);
-      alert("Registration successful! Please login.");
-    } catch (err) {
-      alert(err.response?.data?.message || "Error registering");
-    }
+  const handleRegister = () => {
+    console.log("Register:", { role, name, email, password, confirmPassword });
+    // Add your registration logic here
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-indigo-500 to-purple-600">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow-lg w-96"
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#f0f4f7",
+        //display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        px:"32%",
+      }}
+    >
+      <Paper
+        elevation={4}
+        sx={{
+          p: 4,
+          borderRadius: 3,
+          maxWidth: 450,
+          width: "100%",
+          textAlign: "center",
+        }}
       >
-        <h2 className="text-2xl font-bold mb-6 text-center text-indigo-600">
-          Create Account
-        </h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          onChange={handleChange}
-          className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: "bold", mb: 3, color: "teal" }}
+        >
+          Registration
+        </Typography>
+
+        {/* Role Selection */}
+        <TextField
+          select
+          label="Register As"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          fullWidth
+          sx={{ mb: 2 }}
+        >
+          <MenuItem value="Patient">Patient</MenuItem>
+          <MenuItem value="Doctor">Doctor</MenuItem>
+          <MenuItem value="Admin">Admin</MenuItem>
+        </TextField>
+
+        {/* Name */}
+        <TextField
+          label="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          fullWidth
+          sx={{ mb: 2 }}
         />
-        <input
+
+        {/* Email */}
+        <TextField
+          label="Email Address"
           type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          fullWidth
+          sx={{ mb: 2 }}
         />
-        <input
+
+        {/* Password */}
+        <TextField
+          label="Password"
           type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          className="w-full p-3 mb-6 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          fullWidth
+          sx={{ mb: 2 }}
         />
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 text-white py-3 rounded hover:bg-indigo-700 transition"
+
+        {/* Confirm Password */}
+        <TextField
+          label="Confirm Password"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          fullWidth
+          sx={{ mb: 2 }}
+        />
+
+        {/* Register Button */}
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ mb: 2 }}
+          onClick={handleRegister}
         >
           Register
-        </button>
-      </form>
-    </div>
+        </Button>
+
+        {/* Back to Login */}
+        <Typography variant="body2">
+          Already have an account?{" "}
+          <Link href="/patientLogin" underline="hover" sx={{ color: "teal" }}>
+            Login here
+          </Link>
+        </Typography>
+      </Paper>
+    </Box>
   );
-}
+};
+
+export default Register;

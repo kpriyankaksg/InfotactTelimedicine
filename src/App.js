@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar"
 import PatientLogin from './pages/PatientLogin';
 import DoctorLogin from './pages/DoctorLogin';
 import AdminLogin from './pages/AdminLogin';
+import Register from './pages/Register';
 function Layout() {
   return (
     <>
@@ -37,6 +38,10 @@ function App() {
       {
         path:"/adminLogin",
         element:<AdminLogin />
+      },
+      {
+        path:"/register",
+        element:<Register />
       }
     ]
     //   element:(

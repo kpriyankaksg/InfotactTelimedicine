@@ -78,7 +78,7 @@ const AdminLogin = () => {
         {/* Register Link */}
         <Typography variant="body2">
           Don’t have an account yet?{" "}
-          <Link href="/admin-register" underline="hover" sx={{ color: "teal" }}>
+          <Link href="/register" underline="hover" sx={{ color: "teal" }}>
             Register here
           </Link>
         </Typography>

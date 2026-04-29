@@ -25,33 +25,11 @@ const DoctorLogin = () => {
 
   return (
  
-    // <Box
-    //   sx={{
-    //     minHeight: "100vh",
-    //     bgcolor: "#f0f4f7",
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     p: 2,
-    //   }}
-    // >
-    //   <Paper
-    //     elevation={4}
-    //     sx={{
-    //       p: 4,
-    //       borderRadius: 3,
-    //       maxWidth: 400,
-    //       width: "100%",
-    //       textAlign: "center",
-    //     }}
-    //   >
-       
-    // </Box>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f0f4f7", 
                   alignItems: "center",     // Centers horizontally
                   justifyContent: "center",
                   px:"20%",
-                  py:5
+                  py:2
                }} >
       <Grid container alignItems="stretch" >
         {/* Left Side - Services */}
@@ -166,7 +144,7 @@ const DoctorLogin = () => {
         {/* Register Link */}
         <Typography variant="body2">
           Don’t have an account yet?{" "}
-          <Link href="/doctor-register" underline="hover" sx={{ color: "teal" }}>
+          <Link href="/register" underline="hover" sx={{ color: "teal" }}>
             Register here
           </Link>
         </Typography>

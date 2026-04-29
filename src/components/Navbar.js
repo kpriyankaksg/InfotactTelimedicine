@@ -1,5 +1,5 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { AppBar, Toolbar, Typography, Button, Box, Menu, MenuItem, Grid } from "@mui/material";
+import { AppBar, Box, Button, Grid, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -88,8 +88,6 @@ export default function Navbar() {
             </Grid>
             </Menu>
 
-
-
           <Button component={Link} to="/labs" color="inherit">Lab & Diagnostic</Button>
           <Button component={Link} to="/contact" color="inherit">Contact Us</Button>
         </Box>
@@ -118,14 +116,15 @@ export default function Navbar() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem component={Link} to="/adminLogin" onClick={handleClose}>
-              Admin Login
+            
+            <MenuItem component={Link} to="/patientLogin" onClick={handleClose}>
+              Patient Login
             </MenuItem>
             <MenuItem component={Link} to="/doctorLogin" onClick={handleClose}>
               Doctor Login
             </MenuItem>
-            <MenuItem component={Link} to="/patientLogin" onClick={handleClose}>
-              Patient Login
+            <MenuItem component={Link} to="/adminLogin" onClick={handleClose}>
+              Admin Login
             </MenuItem>
           </Menu>
         </Box>
