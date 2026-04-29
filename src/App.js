@@ -1,11 +1,11 @@
 
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 // import './App.css';
 import Navbar from "./components/Navbar"
 import PatientLogin from './pages/PatientLogin';
 import DoctorLogin from './pages/DoctorLogin';
+import AdminLogin from './pages/AdminLogin';
 function Layout() {
   return (
     <>
@@ -33,7 +33,12 @@ function App() {
       {
         path:"/doctorLogin",
         element:<DoctorLogin />
-      }]
+      },
+      {
+        path:"/adminLogin",
+        element:<AdminLogin />
+      }
+    ]
     //   element:(
     //     <>
     //      <Navbar />

@@ -118,7 +118,7 @@ export default function Navbar() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem component={Link} to="/login-admin" onClick={handleClose}>
+            <MenuItem component={Link} to="/adminLogin" onClick={handleClose}>
               Admin Login
             </MenuItem>
             <MenuItem component={Link} to="/doctorLogin" onClick={handleClose}>
