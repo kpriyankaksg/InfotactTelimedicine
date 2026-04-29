@@ -121,7 +121,7 @@ export default function Navbar() {
             <MenuItem component={Link} to="/login-admin" onClick={handleClose}>
               Admin Login
             </MenuItem>
-            <MenuItem component={Link} to="/login-doctor" onClick={handleClose}>
+            <MenuItem component={Link} to="/doctorLogin" onClick={handleClose}>
               Doctor Login
             </MenuItem>
             <MenuItem component={Link} to="/patientLogin" onClick={handleClose}>

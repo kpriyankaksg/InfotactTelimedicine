@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 // import './App.css';
 import Navbar from "./components/Navbar"
 import PatientLogin from './pages/PatientLogin';
+import DoctorLogin from './pages/DoctorLogin';
 function Layout() {
   return (
     <>
@@ -28,7 +29,11 @@ function App() {
         {
           path:"/patientLogin",
           element:<PatientLogin />
-        }]
+        },
+      {
+        path:"/doctorLogin",
+        element:<DoctorLogin />
+      }]
     //   element:(
     //     <>
     //      <Navbar />

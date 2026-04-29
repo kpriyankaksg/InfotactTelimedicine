@@ -42,9 +42,9 @@ const PatientLogin=()=> {
               height: "100%",
             }}
           >
-            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+            {/* <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
               Patient Services
-            </Typography>
+            </Typography> */}
             <List>
               <ListItem>
                 <CheckCircleIcon color="white" />
