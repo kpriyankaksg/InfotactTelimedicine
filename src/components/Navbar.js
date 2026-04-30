@@ -88,8 +88,8 @@ export default function Navbar() {
             </Grid>
             </Menu>
 
-          <Button component={Link} to="/labs" color="inherit">Lab & Diagnostic</Button>
-          <Button component={Link} to="/contact" color="inherit">Contact Us</Button>
+          <Button component={Link} to="/labDiagnostics" color="inherit">Lab & Diagnostic</Button>
+          <Button component={Link} to="/contactUs" color="inherit">Contact Us</Button>
         </Box>
 
         {/* Action Buttons */}
