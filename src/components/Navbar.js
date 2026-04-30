@@ -38,7 +38,7 @@ export default function Navbar() {
         {/* Navigation Menu */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
           <Button component={Link} to="/" color="inherit">Home</Button>
-          <Button component={Link} to="/about" color="inherit">About Us</Button>
+          <Button component={Link} to="/aboutUs" color="inherit">About Us</Button>
           {/* <Button component={Link} to="/departments" color="inherit">Department</Button> */}
            {/* Departments Dropdown */}
           <Button endIcon={<KeyboardArrowDownIcon />}

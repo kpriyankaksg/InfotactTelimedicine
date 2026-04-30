@@ -7,6 +7,7 @@ import PatientLogin from './pages/PatientLogin';
 import DoctorLogin from './pages/DoctorLogin';
 import AdminLogin from './pages/AdminLogin';
 import Register from './pages/Register';
+import AboutUs from './pages/AboutUs';
 function Layout() {
   return (
     <>
@@ -42,6 +43,10 @@ function App() {
       {
         path:"/register",
         element:<Register />
+      },
+      {
+        path:"/aboutUs",
+        element:<AboutUs />
       }
     ]
     //   element:(
