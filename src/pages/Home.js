@@ -97,8 +97,7 @@ const settings = {
         {/* Text Column (Left) */}
         <Grid item xs={3}  sx={{ minHeight: 400, width:800, px:20 }}>
           <Typography variant="h2" color="primary" gutterBottom
-          sx={{py:5}}
-          >
+          sx={{py:5}}  >
             We at Health Care are there for you ALWAYS and in ALL WAYS.
           </Typography>
           {/* <h1 sx={{color: 'blue'}}> We at Health Care are there for you ALWAYS and in ALL WAYS</h1> */}

@@ -34,11 +34,36 @@ const plans = [
       "Promoting healthy life and wellness to all the women with our extensive health checkup plan curated especially for females.",
     price: "₹6999 /-",
   },
+   {
+    title: "Executive Health Checkup (Male)",
+    description:
+      "Get the advanced health screening for effectively managing the health at all stages with preventive tips and personalised solutions for men.",
+    price: "₹6999 /-",
+  },
+  {
+    title: "Master Health Checkup",
+    description:
+      "Detailed health checkup with diagnostic tests to get complete image of the underlying issues from minor to complex issues.",
+    price: "₹4599 /-",
+  },
+  {
+    title: "Wholebody Health Checkup",
+    description:
+      "Whole Body Checkup is specially planned to detect, diagnose and monitor the entire body ensuring to cover major parameters.",
+    price: "₹8999 /-",
+  },
+  {
+    title: "Renal (Kidney) Health Checkup",
+    description:
+      "Detect the signs of risk and get the preventive tips for maintaining the health and proper functioning of kidneys with Renal health checkup.",
+    price: "₹2999 /-",
+  },
+
 ];
 
 export default function LabDiagnostics() {
   return (
-    <Box sx={{ p: 4, bgcolor: "#f9f9f9" }}>
+    <Box sx={{ p: 4, bgcolor: "#E3FCF9" }}>
       <Typography
         variant="h4"
         align="center"
@@ -52,7 +77,7 @@ export default function LabDiagnostics() {
         All Packages
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center">
+      {/* <Grid container spacing={4} justifyContent="center">
         {plans.map((plan, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card
@@ -103,7 +128,63 @@ export default function LabDiagnostics() {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
+       <Grid container spacing={2}
+        sx={{bgcolor: "#E3FCF9",py:5}} 
+      >
+   
+  {plans.map((plan, index) => (
+     <Grid item xs={4}  sx={{ minHeight: 180, width:350}}>
+      <Card
+        sx={{
+          height: "100%",          // ensures equal height
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          boxShadow: 3,
+          borderRadius: 2,
+          transition: "transform 0.3s",
+          "&:hover": { transform: "scale(1.05)" },
+        }}
+      >
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{ fontWeight: "bold", color: "teal" }}
+          >
+            {plan.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.secondary", mb: 2 }}
+          >
+            {plan.description}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{ fontWeight: "bold", color: "#d32f2f" }}
+          >
+            {plan.price}
+          </Typography>
+        </CardContent>
+
+        <Box sx={{ p: 2, textAlign: "center" }}>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "#00695c",
+              "&:hover": { bgcolor: "#004d40" },
+              borderRadius: 2,
+            }}
+          >
+            READ MORE
+          </Button>
+        </Box>
+      </Card>
+    </Grid>
+  ))}
+</Grid>
     </Box>
   );
 }
