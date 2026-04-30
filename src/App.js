@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import LabDiagnostics from './pages/LabDiagnostics';
+import AppointmentDialog from './pages/AppointmentDialog';
 function Layout() {
   return (
     <>
@@ -56,6 +57,10 @@ function App() {
       {
         path:"/labDiagnostics",
         element:<LabDiagnostics />
+      },
+      {
+        path:"/appointmentDialog",
+        element:<AppointmentDialog />
       }
     ]
     //   element:(

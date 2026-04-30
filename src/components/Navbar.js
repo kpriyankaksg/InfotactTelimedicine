@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [deptAnchorEl, setDeptAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -94,11 +95,11 @@ export default function Navbar() {
 
         {/* Action Buttons */}
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Button
+          <Button onClick={() => setOpen(true)}
             variant="contained"
             color="warning"
             component={Link}
-            to="/appointment"
+            to="/appointmentDialog"
           >
             Book Appointment
           </Button>
