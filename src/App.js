@@ -10,6 +10,8 @@ import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import LabDiagnostics from './pages/LabDiagnostics';
 import AppointmentDialog from './pages/AppointmentDialog';
+import PatientDashboard from './pages/PatientDashboard';
+import DoctorProfile from './pages/DoctorProfile';
 function Layout() {
   return (
     <>
@@ -61,6 +63,14 @@ function App() {
       {
         path:"/appointmentDialog",
         element:<AppointmentDialog />
+      },
+      {
+        path:"/patientDashboard",
+        element:<PatientDashboard />
+      },
+      {
+        path:"/doctorProfile",
+        element:<DoctorProfile />
       }
     ]
     //   element:(

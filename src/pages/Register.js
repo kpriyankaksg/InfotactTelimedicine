@@ -10,14 +10,14 @@ import {
 import { useState } from "react";
 
 const Register = () => {
-  const [role, setRole] = useState("Patient");
+  const [role, setRole] = useState("Select");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = () => {
-    console.log("Register:", { role, name, email, password, confirmPassword });
+    console.log("Register:", { role, name, email, password });
     // Add your registration logic here
   };
 
@@ -93,14 +93,14 @@ const Register = () => {
         />
 
         {/* Confirm Password */}
-        <TextField
+        {/* <TextField
           label="Confirm Password"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           fullWidth
           sx={{ mb: 2 }}
-        />
+        /> */}
 
         {/* Register Button */}
         <Button

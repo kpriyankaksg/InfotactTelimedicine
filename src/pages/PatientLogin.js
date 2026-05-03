@@ -12,17 +12,22 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useNavigate } from "react-router-dom";
 
 const PatientLogin=()=> {
+  const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     // Add your login logic here
     console.log("Login with:", email, password);
+    navigate("/patientDashboard")
+
   };
 
   return (
+    
     <Box sx={{ minHeight: "100vh", bgcolor: "#f0f4f7", 
       //display: "flex",      // Enables flexbox
     //flexDirection: "column",   // Optional: stacks children vertically
