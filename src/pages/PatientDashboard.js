@@ -15,20 +15,25 @@ import FemaleIcon from "@mui/icons-material/Female";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import RestaurantIcon from "@mui/icons-material/Restaurant"; // gastro
+import { Link, useNavigate } from "react-router-dom";
 
 
 const doctors = [
-  { name: "Dr. Richard James", specialty: "General Physician", img: "https://media.istockphoto.com/id/1436529091/photo/smiling-doctor-holding-a-medical-chart.jpg?s=612x612&w=0&k=20&c=0rdvaRW7IVYKrmSUFRi17zGxGgah-7J_ttf1QuZ95d8=" },
-  { name: "Dr. Emily Larson", specialty: "Gynecologist", img: "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.88931xw:1xh;center,top&resize=1200:*" },
-  { name: "Dr. Sarah Patel", specialty: "Dermatologist", img: "https://static.vecteezy.com/system/resources/thumbnails/072/670/062/small/happy-therapist-doctor-making-medical-record-posing-holding-clipboard-standing-over-blue-studio-background-smiling-to-camera-vertical-full-length-shot-of-arabic-male-physician-photo.jpg" },
-  { name: "Dr. Christopher Lee", specialty: "Pediatrician", img: "https://t4.ftcdn.net/jpg/12/10/24/15/360_F_1210241577_0dn4ayO89QwXEwp3SxJS1SWW7pDBPhz0.jpg" },
-  { name: "Dr. Sohel ", specialty: "Cardiologist", img: "https://static.vecteezy.com/system/resources/thumbnails/078/512/560/small/a-smiling-male-doctor-with-a-stethoscope-photo.jpg" },
-  { name: "Dr. Renu Raina Lee", specialty: "Pediatrician", img: "https://safartibbi.com/wp-content/uploads/2023/02/dr.renu-raina.jpg" },
+  { id:1, name: "Dr. Richard James", specialty: "General Physician", img: "https://media.istockphoto.com/id/1436529091/photo/smiling-doctor-holding-a-medical-chart.jpg?s=612x612&w=0&k=20&c=0rdvaRW7IVYKrmSUFRi17zGxGgah-7J_ttf1QuZ95d8=",experience: 4,about:" The Doctor has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",fee: 500 },
+  {id:2,  name: "Dr. Emily Larson", specialty: "Gynecologist", img: "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.88931xw:1xh;center,top&resize=1200:*",experience: 6,about:" The Doctor has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",fee: 400},
+  {id:3,  name: "Dr. Sarah Patel", specialty: "Dermatologist", img: "https://static.vecteezy.com/system/resources/thumbnails/072/670/062/small/happy-therapist-doctor-making-medical-record-posing-holding-clipboard-standing-over-blue-studio-background-smiling-to-camera-vertical-full-length-shot-of-arabic-male-physician-photo.jpg",experience: 9,about:" The Doctor has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",fee: 500 },
+  {id:4,  name: "Dr. Christopher Lee", specialty: "Pediatrician", img: "https://t4.ftcdn.net/jpg/12/10/24/15/360_F_1210241577_0dn4ayO89QwXEwp3SxJS1SWW7pDBPhz0.jpg" ,experience: 10,about:" The Doctor has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",fee: 500},
+  {id:5,  name: "Dr. Sohel ", specialty: "Cardiologist", img: "https://static.vecteezy.com/system/resources/thumbnails/078/512/560/small/a-smiling-male-doctor-with-a-stethoscope-photo.jpg",experience: 5,about:" The Doctor has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",fee: 300 },
+  {id:6,  name: "Dr. Renu Raina Lee", specialty: "Pediatrician", img: "https://safartibbi.com/wp-content/uploads/2023/02/dr.renu-raina.jpg",experience: 3,about:" The Doctor has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",fee: 200 },
  
  
 ];
 
 export default function PatientDashboard() {
+  const navigate=useNavigate();
+  const handleDocClick=(eachDoctor)=>{
+     navigate("/doctorProfile")
+  }
   return (
      <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh" }}>
       {/* Hero Section */}
@@ -121,7 +126,9 @@ export default function PatientDashboard() {
       <Grid container spacing={3}>
         {doctors.map((doc, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card
+            <Link to={`/doctorProfile/${doc.id}`} state={{doctor:doc}} 
+            style={{ textDecoration: "none" }}>
+            <Card onClick={()=>handleDocClick(doc)}
               sx={{
                 height: "100%",
                 display: "flex",
@@ -150,19 +157,8 @@ export default function PatientDashboard() {
                   Available
                 </Typography>
               </CardContent>
-              <Box sx={{ p: 2, textAlign: "center" }}>
-                <Button
-                  variant="contained"
-                  sx={{
-                    bgcolor: "#00695c",
-                    "&:hover": { bgcolor: "#004d40" },
-                    borderRadius: 2,
-                  }}
-                >
-                  Book Now
-                </Button>
-              </Box>
             </Card>
+            </Link>
           </Grid>
         ))}
       </Grid>

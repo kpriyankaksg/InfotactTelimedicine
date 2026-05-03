@@ -69,7 +69,7 @@ function App() {
         element:<PatientDashboard />
       },
       {
-        path:"/doctorProfile",
+        path:"/doctorProfile/:id",
         element:<DoctorProfile />
       }
     ]
