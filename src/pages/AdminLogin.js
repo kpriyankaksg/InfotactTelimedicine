@@ -7,13 +7,16 @@ import {
   Link,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [adminId, setAdminId] = useState("");
   const [password, setPassword] = useState("");
+  const navigate=useNavigate();
 
   const handleLogin = () => {
     console.log("Admin Login with:", adminId, password);
+    navigate("/adminDashboard");
     // Add your admin login logic here
   };
 

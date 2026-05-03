@@ -12,6 +12,7 @@ import LabDiagnostics from './pages/LabDiagnostics';
 import AppointmentDialog from './pages/AppointmentDialog';
 import PatientDashboard from './pages/PatientDashboard';
 import DoctorProfile from './pages/DoctorProfile';
+import AdminDashboard from './pages/AdminDashboard';
 function Layout() {
   return (
     <>
@@ -71,6 +72,10 @@ function App() {
       {
         path:"/doctorProfile/:id",
         element:<DoctorProfile />
+      },
+      {
+        path:"/adminDashboard",
+        element:<AdminDashboard />
       }
     ]
     //   element:(
