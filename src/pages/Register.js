@@ -1,14 +1,14 @@
 import {
   Box,
   Button,
+  Link,
+  MenuItem,
   Paper,
   TextField,
   Typography,
-  Link,
-  MenuItem,
 } from "@mui/material";
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
 
 const Register = () => {
