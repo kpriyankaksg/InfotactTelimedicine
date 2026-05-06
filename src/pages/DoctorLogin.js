@@ -11,16 +11,41 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const DoctorLogin = () => {
   const [doctorId, setDoctorId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
+  const navigate=useNavigate();
 
-  const handleLogin = () => {
-    console.log("Doctor Login with:", doctorId, email, password);
-    // Add your doctor login logic here
+  const handleLogin = async() => {
+    // Add your login logic here
+    console.log("Login with:", email, password);
+     try {
+    const response = await axios.post("http://localhost:5000/api/auth/login", {
+      email,
+      password,
+    });
+      const result = response.data;
+    
+      console.log(result);
+      if (result.token) {
+       login(result.token);   // ✅ update context + localStorage
+       alert("Login Successfully.");
+          navigate("/doctorDashboard"); 
+      } else {
+        alert(result.error);
+      }
+    } catch (error) {
+      alert("Invalid Credentials.");
+      console.error(error.response?.data || error.message);
+    }
   };
 
   return (
@@ -102,13 +127,13 @@ const DoctorLogin = () => {
         </Typography>
 
         {/* Doctor ID */}
-        <TextField
+        {/* <TextField
           label="Doctor ID / Registration Number"
           value={doctorId}
           onChange={(e) => setDoctorId(e.target.value)}
           fullWidth
           sx={{ mb: 2 }}
-        />
+        /> */}
 
         {/* Email */}
         <TextField

@@ -13,6 +13,7 @@ import AppointmentDialog from './pages/AppointmentDialog';
 import PatientDashboard from './pages/PatientDashboard';
 import DoctorProfile from './pages/DoctorProfile';
 import AdminDashboard from './pages/AdminDashboard';
+import DoctorDashboard from "./pages/DoctorDashboard"
 function Layout() {
   return (
     <>
@@ -76,6 +77,10 @@ function App() {
       {
         path:"/adminDashboard",
         element:<AdminDashboard />
+      },
+      {
+        path:"/doctorDashboard",
+        element:<DoctorDashboard />
       }
     ]
     
