@@ -1,24 +1,42 @@
 import {
   Box,
   Button,
+  Link,
   Paper,
   TextField,
   Typography,
-  Link,
 } from "@mui/material";
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
+
+
 
 const AdminLogin = () => {
-  const [adminId, setAdminId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate=useNavigate();
+  const { login } = useContext(AuthContext);
 
-  const handleLogin = () => {
-    console.log("Admin Login with:", adminId, password);
-    navigate("/adminDashboard");
-    // Add your admin login logic here
-  };
+ const handleLogin = async () => {
+  try{
+  const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+     const result = response.data;
+      console.log(result);
+      if (result.token) {
+       login(result.token);   // ✅ update context + localStorage
+       alert("Login Successfully.");
+          navigate("/adminDashboard"); 
+      } else {
+        alert(result.error);
+      }
+    } catch (error) {
+      alert("Invalid Credentials.");
+      console.error(error.response?.data || error.message);
+    }
+  }
 
   return (
     <Box
@@ -49,13 +67,15 @@ const AdminLogin = () => {
         </Typography>
 
         {/* Admin ID */}
-        <TextField
-          label="Admin ID / Username"
-          value={adminId}
-          onChange={(e) => setAdminId(e.target.value)}
-          fullWidth
-          sx={{ mb: 2 }}
-        />
+         {/* Email */}
+            <TextField
+              label="Email Address"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              fullWidth
+              sx={{ mb: 2 }}
+            />
 
         {/* Password */}
         <TextField
@@ -88,6 +108,7 @@ const AdminLogin = () => {
       </Paper>
     </Box>
   );
-};
+}
+
 
 export default AdminLogin;

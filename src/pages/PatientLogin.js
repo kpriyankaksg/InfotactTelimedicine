@@ -1,4 +1,7 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
 import {
   Box,
   Button,
@@ -19,6 +22,8 @@ const PatientLogin=()=> {
   const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
+
 
   const handleLogin = async() => {
     // Add your login logic here
@@ -32,9 +37,9 @@ const PatientLogin=()=> {
     
       console.log(result);
       if (result.token) {
-        localStorage.setItem("token", result.token);
-        alert("Login Successfully.");
-        navigate("/patientDashboard")
+       login(result.token);   // ✅ update context + localStorage
+       alert("Login Successfully.");
+          navigate("/patientDashboard"); 
       } else {
         alert(result.error);
       }

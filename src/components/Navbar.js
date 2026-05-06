@@ -1,9 +1,9 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { AppBar, Box, Button, Grid, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from '../context/AuthContext';
+
 
 
 
@@ -33,11 +33,11 @@ export default function Navbar() {
   const handleDeptClose = () => {
     setDeptAnchorEl(null);
   };
-      //   const handleLogout = () => {
-      //   localStorage.removeItem("token");   // clear token
-      //   setIsLoggedIn(false);               // update state
-      //   navigate("/");                      // redirect to home
-      // };
+       const handleLogout = () => {
+          logout();          // clears token + state
+          navigate("/");     // redirect to home
+        };
+
 
       // useEffect(() => {
       //   const token = localStorage.getItem("token");
@@ -131,7 +131,7 @@ export default function Navbar() {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={logout}
+                onClick={handleLogout}
               >
                 Logout
               </Button>

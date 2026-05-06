@@ -126,7 +126,7 @@ export default function AdminDashboard() {
     { name: "Dr. Christopher Lee", specialty: "Pediatrician", available: true },
     { name: "Dr. Jennifer Garcia", specialty: "Neurologist", available: true },
     { name: "Dr. Andrew Williams", specialty: "Gastroenterologist", available: false },
-    { name: "Dr. Christopher Davis", specialty: "General physician", available: false },
+    { name: "Dr. Christopher", specialty: "General physician", available: false },
     { name: "Dr. Timothy White", specialty: "Gynecologist", available: false },
     { name: "Dr. Ava Mitcheli", specialty: "Dermatologist", available: false },
     { name: "Dr. Jeffrey King", specialty: "Pediatrician", available: false },
@@ -171,18 +171,7 @@ export default function AdminDashboard() {
     </Typography>
   ))}
 
-        {/* <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("dashboard")}>
-          Dashboard
-        </Typography>
-        <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("appointments")}>
-          Appointments
-        </Typography>
-        <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("addDoctor")}>
-          Add Doctor
-        </Typography>
-        <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("allDoctorsList")}>
-          Doctors List
-        </Typography> */}
+       
       </Box>
 
       {/* Main Content */}
@@ -205,11 +194,11 @@ export default function AdminDashboard() {
                 </Grid>
               ))}
             </Grid>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold",color:"red" }}>
               Latest Bookings
             </Typography>
-             <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
-          <CardContent>
+             <Card sx={{ boxShadow: 3, borderRadius: 2, my:2}}>
+          <CardContent >
             <List>
               {bookings.map((b, i) => (
                 <ListItem key={i}>
@@ -235,7 +224,7 @@ export default function AdminDashboard() {
         {/* all appointments */}
          {activePage === "appointments" && (
           <>
-            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3,color:"red" }}>
               All Appointments
             </Typography>
             <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
@@ -288,7 +277,7 @@ export default function AdminDashboard() {
           {/* add doctor */}
         {activePage === "addDoctor" && (
           <>
-            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3,color:"red" }}>
               Add Doctor
             </Typography>
             <Card sx={{ p: 3, boxShadow: 3, borderRadius: 2 }}>
@@ -313,7 +302,7 @@ export default function AdminDashboard() {
 
         {activePage === "allDoctorsList" && (
   <>
-    <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+    <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3,color:"red" }}>
       All Doctors
     </Typography>
     <Grid container spacing={3}>

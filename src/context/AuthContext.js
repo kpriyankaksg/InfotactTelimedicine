@@ -1,5 +1,4 @@
-
-// AuthContext.js
+// src/context/AuthContext.js
 import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
@@ -18,9 +17,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-  };
+  localStorage.removeItem("token");   // clear token
+  setIsLoggedIn(false);               // update state
+};
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
