@@ -1,3 +1,4 @@
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   Box,
   Button,
@@ -10,8 +11,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useNavigate } from "react-router-dom";
 
 const PatientLogin=()=> {
@@ -19,15 +20,32 @@ const PatientLogin=()=> {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async() => {
     // Add your login logic here
     console.log("Login with:", email, password);
-    navigate("/patientDashboard")
-
+     try {
+    const response = await axios.post("http://localhost:5000/api/auth/login", {
+      email,
+      password,
+    });
+      const result = response.data;
+    
+      console.log(result);
+      if (result.token) {
+        localStorage.setItem("token", result.token);
+        alert("Login Successfully.");
+        navigate("/patientDashboard")
+      } else {
+        alert(result.error);
+      }
+    } catch (error) {
+      alert("Invalid Credentials.");
+      console.error(error.response?.data || error.message);
+    }
   };
 
+
   return (
-    
     <Box sx={{ minHeight: "100vh", bgcolor: "#f0f4f7", 
       //display: "flex",      // Enables flexbox
     //flexDirection: "column",   // Optional: stacks children vertically

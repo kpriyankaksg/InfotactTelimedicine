@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -16,6 +17,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate=useNavigate();
   // const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = async () => {
@@ -29,6 +31,7 @@ const Register = () => {
     });
     console.log("Success:", response.data);
     alert("Registration successful!");
+    navigate("/")
   } catch (error) {
     console.error("Error:", error.response?.data || error.message);
     alert(error.response?.data?.message || "Registration failed");

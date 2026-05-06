@@ -78,30 +78,7 @@ function App() {
         element:<AdminDashboard />
       }
     ]
-    //   element:(
-    //     <>
-    //      <Navbar />
-    //       <Home />
-    //     </>
-    //   )
-    // },
-    //  {
-    //   path: "/dashboard",
-    //   element: (
-    //     <>
-    //       <Navbar />
-    //       <Dashboard />
-    //     </>
-    //   )
-    // },
-    // {
-    //   path:"/patientLogin",
-    //   element:(
-    //     <>
-    //     <Navbar />
-    //     <PatientLogin />
-    //     </>
-    //   )
+    
      }
 
   ]

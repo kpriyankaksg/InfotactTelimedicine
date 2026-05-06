@@ -1,12 +1,22 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { AppBar, Box, Button, Grid, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+
+
+
+
+
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [deptAnchorEl, setDeptAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +33,18 @@ export default function Navbar() {
   const handleDeptClose = () => {
     setDeptAnchorEl(null);
   };
+      //   const handleLogout = () => {
+      //   localStorage.removeItem("token");   // clear token
+      //   setIsLoggedIn(false);               // update state
+      //   navigate("/");                      // redirect to home
+      // };
+
+      // useEffect(() => {
+      //   const token = localStorage.getItem("token");
+      //   setIsLoggedIn(!!token);
+      // }, []);
+
+
 
 
   return (
@@ -105,29 +127,41 @@ export default function Navbar() {
           </Button>
 
           {/* Login Dropdown */}
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleClick}
-          >
-            Login
-          </Button>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            
-            <MenuItem component={Link} to="/patientLogin" onClick={handleClose}>
-              Patient Login
-            </MenuItem>
-            <MenuItem component={Link} to="/doctorLogin" onClick={handleClose}>
-              Doctor Login
-            </MenuItem>
-            <MenuItem component={Link} to="/adminLogin" onClick={handleClose}>
-              Admin Login
-            </MenuItem>
-          </Menu>
+          {isLoggedIn ? (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            ) : (
+              <>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleClick}
+                >
+                  Login
+                </Button>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem component={Link} to="/patientLogin" onClick={handleClose}>
+                    Patient Login
+                  </MenuItem>
+                  <MenuItem component={Link} to="/doctorLogin" onClick={handleClose}>
+                    Doctor Login
+                  </MenuItem>
+                  <MenuItem component={Link} to="/adminLogin" onClick={handleClose}>
+                    Admin Login
+                  </MenuItem>
+                </Menu>
+              </>
+            )}
+        
         </Box>
       </Toolbar>
     </AppBar>
