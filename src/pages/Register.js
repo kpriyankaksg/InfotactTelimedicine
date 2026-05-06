@@ -8,6 +8,8 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
+
 
 const Register = () => {
   const [role, setRole] = useState("Select");
@@ -16,9 +18,21 @@ const Register = () => {
   const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     console.log("Register:", { role, name, email, password });
-    // Add your registration logic here
+   try {
+    const response = await axios.post("http://localhost:5000/api/auth/register", {
+      role,
+      name,
+      email,
+      password,
+    });
+    console.log("Success:", response.data);
+    alert("Registration successful!");
+  } catch (error) {
+    console.error("Error:", error.response?.data || error.message);
+    alert(error.response?.data?.message || "Registration failed");
+  }
   };
 
   return (
@@ -50,7 +64,7 @@ const Register = () => {
         </Typography>
 
         {/* Role Selection */}
-        <TextField
+        <TextField 
           select
           label="Register As"
           value={role}

@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import authRoutes from "./routes/auth.js";
+
 
 
 dotenv.config();
@@ -19,5 +21,8 @@ mongoose.connect(process.env.ATLAS_URL)
   .then(() => console.log("✅ Connected to MongoDB Atlas"))
   .catch((error) => console.error("MongoDB connection error:", error));
 
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+// const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
+app.listen(5000, () => console.log("Server running on port 5000"));

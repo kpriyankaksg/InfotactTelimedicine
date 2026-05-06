@@ -140,15 +140,38 @@ export default function AdminDashboard() {
       <Box
         sx={{
           width: 240,
-          bgcolor: "#1976d2",
-          color: "white",
+          bgcolor: "#E8E9EB",
+          color: "black",
           p: 3,
         }}
       >
         <Typography variant="h6" sx={{ mb: 3, fontWeight: "bold" }}>
           Admin Panel
         </Typography>
-        <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("dashboard")}>
+        {/* Sidebar items */}
+  {[
+    { label: "Dashboard", key: "dashboard" },
+    { label: "Appointments", key: "appointments" },
+    { label: "Add Doctor", key: "addDoctor" },
+    { label: "Doctors List", key: "allDoctorsList" },
+  ].map((item) => (
+    <Typography
+      key={item.key}
+      sx={{
+        mb: 2,
+        cursor: "pointer",
+        p: 1,
+        borderRadius: 1,
+        bgcolor: activePage === item.key ? "#A9A9A9" : "transparent", // highlight active
+        fontWeight: activePage === item.key ? "bold" : "normal",
+      }}
+      onClick={() => setActivePage(item.key)}
+    >
+      {item.label}
+    </Typography>
+  ))}
+
+        {/* <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("dashboard")}>
           Dashboard
         </Typography>
         <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("appointments")}>
@@ -159,7 +182,7 @@ export default function AdminDashboard() {
         </Typography>
         <Typography sx={{ mb: 2, cursor: "pointer" }} onClick={() => setActivePage("allDoctorsList")}>
           Doctors List
-        </Typography>
+        </Typography> */}
       </Box>
 
       {/* Main Content */}
